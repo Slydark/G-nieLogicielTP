@@ -23,5 +23,5 @@ def animation(x, fig, alpha=0.1):
     fig.clear()
     y = np.exp(-x) * np.cos(alpha * x)
     graph, = plt.plot(x, y)
-    plt.axis([0.5, -1, 1])
+    plt.axis([0, 5, -1, 1])
     plt.draw()

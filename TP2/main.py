@@ -22,7 +22,7 @@ import filtre
 # ==========================
 def passeBas():
     # Initialisation des paramètres
-    alpha = 0.08
+    alpha = 0.5
     delta_t = 0.01
     nombre_echantillons = 1000
 
@@ -98,12 +98,54 @@ def titresLegendes2():
 # ==========================
 def animationGraphique():
     fig = plt.figure()
-    x = np.arange(0.5, 0.01)
+    x = np.arange(0, 5, 0.01)
 
     filtre.animation(x, fig)
 
     alpha_vals = np.hstack((np.linspace(1, 10, 30), np.linspace(10, 1, 30)))
     anim = ani.FuncAnimation(fig, filtre.animation, alpha_vals, interval=50)
+    plt.show()
+# ==========================
+# Problème II.6 : Calculs de moments en 2D 1/2
+# ==========================
+def moments2D():
+    a = 2
+    b = -3
+    x = np.random.randn(200)
+    y = a * x + b + np.random.randn(np.size(x))
+
+    plt.figure()
+    plt.plot(x, y, '.')
+    plt.axis('equal')
+    plt.show()
+# ==========================
+# Problème II.6 : Calculs de moments en 2D 2/2
+# ==========================
+def anime2D():
+    # Génération des points aléatoires
+    a = 2
+    b = -3
+    x = np.random.randn(200)
+    y = a * x + b + np.random.randn(np.size(x))
+
+    # Création de la matrice A
+    A = np.outer(x, y)
+
+    # Calcul du barycentre
+    x0 = np.mean(x)
+    y0 = np.mean(y)
+
+    # Affichage des résultats
+    print("Matrice A :\n", A)
+    print("Barycentre (x0, y0) : (", x0, ",", y0, ")")
+
+    # Visualisation du nuage de points
+    plt.figure(1)
+    plt.plot(x, y, 'o')
+    plt.axis('equal')
+    plt.title('Nuage de points')
+    plt.xlabel('x')
+    plt.ylabel('y')
     plt.show()
 
 if __name__ == "__main__":
@@ -111,4 +153,5 @@ if __name__ == "__main__":
     # minFunction()
     # titresLegendes()
     # titresLegendes2()
-    animationGraphique()
+    # animationGraphique()
+    moments2D()
